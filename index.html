@@ -1,0 +1,32 @@
+{#$def with (title, vm_port_number, vm_server, fwidth, fheight)#}
+<html>
+<head>
+    <title>{{title}}</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+{#	<link rel="stylesheet" href="/public/css/base.css" title="plain">#}
+	<link rel="stylesheet" href="/static/css/kvm_vnc/base.css" title="plain">
+{#    <script src="/public/js/vnc.js"></script>#}
+    <script src="/static/js/kvm_vnc/vnc.js"></script>
+</head>
+<body style="margin: 0px;">
+        <div id="noVNC_screen">
+            <div id="noVNC_status_bar" class="noVNC_status_bar" style="margin-top: 0px;">
+                <table border=0 width="{{fwidth}}"><tr> <!-- height="$fheight"-->
+                    <td><div id="noVNC_status">Loading</div></td>
+                    <td width="2%"><div id="noVNC_buttons">
+                        <input type=button value="Send Ctrl+Alt+Del"
+                            id="sendCtrlAltDelButton">
+                            </div></td>
+                </tr></table>
+            </div>
+            <canvas id="noVNC_canvas" width="640px" height="20px">
+                Canvas not supported.
+            </canvas>
+        </div>
+		<input type="hidden" id="{{vm_server}}" value="$vm_server" />
+		<input type="hidden" id="{{vm_port_number}}" value="$vm_port_number" />
+{#        <script type="text/javascript" src="/public/js/vnc_from_html.js"></script>#}
+        <script type="text/javascript" src="/static/js/kvm_vnc/vnc_from_html.js"></script>
+
+    </body>
+</html>
